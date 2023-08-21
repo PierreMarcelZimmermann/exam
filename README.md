@@ -45,7 +45,6 @@ The project follows a modular structure to organize code effectively. Key direct
 ### Event Edit Component
 
 - Allows users to edit existing events.
-- Provides a form with fields to modify event details.
 
 ### Event Detail View Component
 
@@ -55,19 +54,12 @@ The project follows a modular structure to organize code effectively. Key direct
 ### Category User Input Component
 
 - Allows users to create new event categories.
-- Provides a form for adding new category names.
 
 ### Categories Display Component
 
 - Displays a paginated list of event categories.
 - Supports filtering categories by search query.
 - Provides options to delete categories.
-
-### Calendar Component
-
-- This would have been a montly view
-- Abandonded during development
-
 
 ## Installation
 
@@ -85,7 +77,8 @@ The project follows a modular structure to organize code effectively. Key direct
 In addition to the basic features mentioned above, the Angular Event Management Application also includes the following advanced features:
 
 - Search bars for events and categories
-- Pagination for events
+- Pagination for events and categories
+- Search filter for categories on events
 - Easy and efficient navigation using Angular Routing
 - Real-time Data Updates
 
