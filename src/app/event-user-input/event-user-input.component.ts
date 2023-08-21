@@ -85,6 +85,8 @@ export class EventUserInputComponent implements OnInit {
           console.error('Error creating event:', error);
         }
       );
+
+      this.eventForm.reset();
     } else {
       // Log form field errors if the form is not valid
       Object.keys(this.eventForm.controls).forEach(fieldName => {
