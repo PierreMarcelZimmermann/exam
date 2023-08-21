@@ -50,15 +50,15 @@ export class EventUserInputComponent implements OnInit {
       const startDate = this.eventForm.value.startDate;
       const endDate = this.eventForm.value.endDate;
 
-      let startDateTime = this.formatDateTime(startDate, this.eventForm.value.startTime, isAllDay);
+      let startDateTime = this.formatDateTime(startDate, this.eventForm.value.startTime);
       let endDateTime;
 
       if (isAllDay) {
         // For all-day events, set start time to 00:00 and end time to 23:59
-        startDateTime = this.formatDateTime(startDate, '00:00', isAllDay);
-        endDateTime = this.formatDateTime(endDate, '23:59', isAllDay);
+        startDateTime = this.formatDateTime(startDate, '00:00');
+        endDateTime = this.formatDateTime(endDate, '23:59');
       } else {
-        endDateTime = this.formatDateTime(endDate, this.eventForm.value.endTime, isAllDay);
+        endDateTime = this.formatDateTime(endDate, this.eventForm.value.endTime);
       }
 
       // Prepare event data for creation
@@ -102,10 +102,9 @@ export class EventUserInputComponent implements OnInit {
    * Formats a date and time into a string suitable for API submission.
    * @param date The date to be formatted.
    * @param time The time to be formatted.
-   * @param isAllDay Indicates if the event is an all-day event.
    * @returns A formatted date-time string.
    */
-  private formatDateTime(date: Date, time: string, isAllDay: boolean): string {
+  private formatDateTime(date: Date, time: string): string {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');

@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
 import { CategoryService } from '../category.service';
-import { Observable } from 'rxjs';
 import { Category } from '../category.interface';
 import { Event } from '../event.interface';
 
@@ -12,7 +11,7 @@ import { Event } from '../event.interface';
   templateUrl: './event-edit.component.html',
   styleUrls: ['./event-edit.component.css']
 })
-export class EventEditComponent implements OnInit {
+export class EventEditComponent {
   eventForm: FormGroup;
   allCategories: Category[] = [];
 
@@ -45,8 +44,6 @@ export class EventEditComponent implements OnInit {
 
     this.loadAllCategories();
   }
-
-  ngOnInit() {}
 
   loadEvent(eventId: number) {
     this.dataService.getEventByID(eventId).subscribe(event => {
@@ -93,7 +90,7 @@ export class EventEditComponent implements OnInit {
     }
   }
 
-  private formatDateTime(date: Date, time: string, isAllDay: boolean): string {
+  private formatDateTime(date: Date, time: string): string {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
@@ -117,11 +114,11 @@ export class EventEditComponent implements OnInit {
   
       if (isAllDay) {
         // For all-day events, set start time to 00:00 and end time to 23:59
-        startDateTime = this.formatDateTime(startDate, '00:00', isAllDay);
-        endDateTime = this.formatDateTime(endDate, '23:59', isAllDay);
+        startDateTime = this.formatDateTime(startDate, '00:00');
+        endDateTime = this.formatDateTime(endDate, '23:59');
       } else {
-        startDateTime = this.formatDateTime(startDate, this.eventForm.value.startTime, isAllDay);
-        endDateTime = this.formatDateTime(endDate, this.eventForm.value.endTime, isAllDay);
+        startDateTime = this.formatDateTime(startDate, this.eventForm.value.startTime);
+        endDateTime = this.formatDateTime(endDate, this.eventForm.value.endTime);
       }
   
       console.log('startDateTime:', startDateTime);
