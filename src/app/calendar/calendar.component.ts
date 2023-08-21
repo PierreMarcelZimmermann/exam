@@ -74,7 +74,7 @@ export class CalendarComponent implements OnInit {
     let dayCounter = 1;
   
     for (let i = 0; i < 6; i++) {
-      let week: CalendarDay[] = [];
+      const week: CalendarDay[] = [];
   
       for (let j = 0; j < 7; j++) {
         if (i === 0 && j < firstDay.getDay()) {

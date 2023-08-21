@@ -14,9 +14,9 @@ import { map } from 'rxjs/operators';
 export class CategoriesDisplayComponent implements OnInit {
   categories$: Observable<Category[]> | undefined;
   pagedCategories$: Observable<Category[]> | undefined;
-  totalCategories: number = 0;
-  currentPage: number = 0;
-  pageSize: number = 10;
+  totalCategories = 0;
+  currentPage = 0;
+  pageSize = 10;
 
   constructor(private router: Router, private categoryService: CategoryService) { }
 

@@ -20,11 +20,11 @@ export class ListDisplayComponent implements OnInit {
   events$: Observable<Event[]> = new Observable<Event[]>();
   pagedEvents$: Observable<Event[]> = new Observable<Event[]>();
 
-  totalEvents: number = 0;
-  currentPage: number = 0;
-  pageSize: number = 10;
+  totalEvents = 0;
+  currentPage = 0;
+  pageSize = 10;
 
-  searchQuery: string = '';
+  searchQuery = '';
   selectedCategory: number | undefined;
   allCategories: Category[] = [];
 
