@@ -108,13 +108,21 @@ export class EventEditComponent implements OnInit {
 
   onSubmit() {
     if (this.eventForm.valid) {
-  
       const isAllDay = this.eventForm.value.allday;
       const startDate = this.eventForm.value.startDate;
       const endDate = this.eventForm.value.endDate;
   
-      const startDateTime = this.formatDateTime(startDate, this.eventForm.value.startTime, isAllDay);
-      const endDateTime = this.formatDateTime(endDate, this.eventForm.value.endTime, isAllDay);
+      let startDateTime: string;
+      let endDateTime: string;
+  
+      if (isAllDay) {
+        // For all-day events, set start time to 00:00 and end time to 23:59
+        startDateTime = this.formatDateTime(startDate, '00:00', isAllDay);
+        endDateTime = this.formatDateTime(endDate, '23:59', isAllDay);
+      } else {
+        startDateTime = this.formatDateTime(startDate, this.eventForm.value.startTime, isAllDay);
+        endDateTime = this.formatDateTime(endDate, this.eventForm.value.endTime, isAllDay);
+      }
   
       console.log('startDateTime:', startDateTime);
       console.log('endDateTime:', endDateTime);
@@ -133,5 +141,6 @@ export class EventEditComponent implements OnInit {
       });
     }
   }
+  
   
 }
