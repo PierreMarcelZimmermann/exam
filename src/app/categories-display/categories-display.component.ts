@@ -14,10 +14,10 @@ import { map } from 'rxjs/operators';
 export class CategoriesDisplayComponent implements OnInit {
   categories$: Observable<Category[]> | undefined;
   pagedCategories$: Observable<Category[]> | undefined;
-  totalCategories: number = 0;
-  currentPage: number = 0;
-  pageSize: number = 10;
-  
+  totalCategories = 0;
+  currentPage = 0;
+  pageSize = 10;
+
   constructor(private router: Router, private categoryService: CategoryService) { }
 
   /**
@@ -90,9 +90,8 @@ export class CategoriesDisplayComponent implements OnInit {
    * Handles search event to filter categories based on the search query.
    * @param event The input event containing the search query.
    */
-  onSearch(event: any) {
-    const query = event.target.value;
-    if (this.categories$) {
+  onSearch(event: Event) {
+    const query = (event.target as HTMLInputElement).value;    if (this.categories$) {
       this.pagedCategories$ = this.categories$.pipe(
         map(categories => {
           const filteredCategories = categories.filter(category =>
